@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var con = require('../models');
-var pool  = require('../models');
+var pool  = require('../models/connection');
 
 
 /* GET users listing. */
