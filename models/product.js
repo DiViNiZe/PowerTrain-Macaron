@@ -14,18 +14,18 @@ exports.getProdByID = function(id,callback){
     });
 }
 
-var getProductByType = function(type){
+exports.getProductByType = function(type){
     conn.query('select * from product where type = '+type ,function(err,result,fields){
         return result
     });
 }
 
-var getProductByBrand = function(brand){
+exports.getProductByBrand = function(brand){
     conn.query('select * from product where brand = '+brand ,function(err,result,fields){
         return result
     });
 }
 
-var putProduct = function(id,type,brand){
-    conn.query('insert into product values('+id+','+type+','+brand+');');
+exports.putProduct = function(id,name,price,type,brand,img,com){
+    conn.query("insert into product VALUES (?, ?, ?, ?, ?, ?, ?);",[id,name,price,type,brand,img,com]);
 }
