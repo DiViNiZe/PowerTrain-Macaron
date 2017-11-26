@@ -1,15 +1,18 @@
 var express = require('express');
 var router = express.Router();
-var con = require('../models');
 var pool  = require('../models');
-var query = require('../models/query')
+var product = require('../models/product');
 
-router.get('/',function(req, res, next) {
-  // pool.query(query.all,function(err,result,fields){
-  //   if(err)throw err;
-  //   res.json(JSON.stringify(result));
-  // });
-  query.test('Hi')
+router.get('/',function(req,res,next){
+  product.getProducts(function(data){
+    res.json(JSON.stringify(data));
+  })
+});
+
+router.get('/:prodId',function(req, res, next) {
+  product.getProdByID(req.params.prodId,function(data){
+    res.json(JSON.stringify(data));
+  });
 });
 
 module.exports = router;
